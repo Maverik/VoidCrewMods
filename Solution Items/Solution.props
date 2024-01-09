@@ -1,0 +1,96 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>latest</LangVersion>
+        <Features>strict</Features>
+        <Company>Mav's Work</Company>
+        <Authors>Maverik</Authors>
+        <Copyright>Copyright &#169; $([System.DateTime]::Now.Year)</Copyright>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <ProjectDirectoryName>$([System.IO.Path]::GetFileName($(MSBuildProjectDirectory)))</ProjectDirectoryName>
+        <RepositoryUrl>https://github.com/Maverik/VoidCrewMods/blob/main/$(ProjectDirectoryName)</RepositoryUrl>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GenerateDependencyFile>false</GenerateDependencyFile>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <AnalysisMode>All</AnalysisMode>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <DebugType>embedded</DebugType>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <NoWarn>CA1812; CA1501; CA1707; CA2243; CA1000; CA1031</NoWarn>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <SolutionItemsDir>$(SolutionDir)Solution Items\</SolutionItemsDir>
+        <PackageOutputPath>$(SolutionDir)package\</PackageOutputPath>
+        <ThunderPackagingRoot>$(SolutionDir)Packaging\Thunderstore\</ThunderPackagingRoot>
+        <ThunderPackagingPath>$(ThunderPackagingRoot)$(MSBuildProjectName)\</ThunderPackagingPath>
+        <OutputPath>$(ThunderPackagingPath)BepInEx\Plugins\MavsPlugins\$(MSBuildProjectName)\</OutputPath>
+        <DefaultPackageIcon>$(SolutionItemsDir)icon.png</DefaultPackageIcon>
+        <GamePath>$([MSBuild]::GetRegistryValue(`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 1063420`, `InstallLocation`))\</GamePath>
+        <GamePath Condition="'$(GamePath)' == ''">Only needed if game cannot be autodetected from steam install</GamePath>
+    </PropertyGroup>
+
+    <ItemDefinitionGroup>
+        <PackageReference>
+            <Private>False</Private>
+            <!--<GeneratePathProperty>True</GeneratePathProperty>-->
+        </PackageReference>
+        <ProjectReference>
+            <Private>False</Private>
+        </ProjectReference>
+        <Reference>
+            <Private>False</Private>
+        </Reference>
+    </ItemDefinitionGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Core"/>
+        <PackageReference Include="System.ComponentModel.Annotations"/>
+        <PackageReference Include="UnityEngine.Modules"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>$(GamePath)Void Crew_Data\Managed\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="Opsive.Shared">
+            <HintPath>$(GamePath)Void Crew_Data\Managed\Opsive.Shared.dll</HintPath>
+        </Reference>
+        <Reference Include="Opsive.UltimateCharacterController">
+            <HintPath>$(GamePath)Void Crew_Data\Managed\Opsive.UltimateCharacterController.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>$(GamePath)Void Crew_Data\Managed\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="PhotonUnityNetworking">
+            <HintPath>$(GamePath)Void Crew_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+        </Reference>
+        <Reference Include="PhotonRealtime">
+            <HintPath>$(GamePath)Void Crew_Data\Managed\PhotonRealtime.dll</HintPath>
+        </Reference>
+        <Reference Include="ResourceAssets">
+            <HintPath>$(GamePath)Void Crew_Data\Managed\ResourceAssets.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(AssemblyName)' != 'MavsLibCore'">
+        <ProjectReference Include="$(SolutionDir)\MavsLibCore\MavsLibCore.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)Solution Items\GlobalUsings.cs"/>
+        <None Include="$(SolutionDir)Solution Items\LICENSE" CopyToOutputDirectory="Always" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectProperty Include="PackageId"/>
+        <ProjectProperty Include="ThunderstorePackageName"/>
+    </ItemGroup>
+</Project>

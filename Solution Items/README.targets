@@ -1,0 +1,73 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="_GenerateReadme" AfterTargets="Build" Inputs="$(MSBuildAllProjects)" Outputs="$(ThunderPackagingPath)README.md;$(OutputPath)README.md">
+        <PropertyGroup>
+            <ReaderMePluginContent Condition="'$(ReaderMePluginContent)' == '' and Exists('$(ProjectDir)_README.md')">$([System.IO.File]::ReadAllText('$(ProjectDir)_README.md'))</ReaderMePluginContent>
+            <ReadmeHeaderContent><![CDATA[
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%2520BY--NC--SA%25204.0-orange.svg?logo=creativecommons&link=https://creativecommons.org/licenses/by-nc-sa/4.0/)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+---
+
+# $(Product)
+
+$(Description)
+
+&nbsp%3B
+
+]]>
+            </ReadmeHeaderContent>
+            <ReadmeFooterContent><![CDATA[
+&nbsp%3B
+
+## ⏬ Manual Install
+
+### 📃 Prerequisite
+
+This is a [BepInEx 5](https://github.com/BepInEx/BepInEx) mod and as such requires that you have BepInEx 5 installed and working properly. If you've not done that yet, please go to their [documentation](https://docs.bepinex.dev/articles/user_guide/installation/index.html) on how to get it installed. 
+
+You want the Stable (5.x - 5.4.22 LTS at the time of writing) **MONO** build when you're presented with choices.
+
+If you already know how to get BepInEx working, head over to their [Releases](https://github.com/BepInEx/BepInEx/releases) to grab the latest copy.
+
+
+### 👌 Recommended
+
+My mods support configuration through [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager) and I'd recommend you grabbing that as well to be able to tweak the mod to your own tastes.
+
+
+### ✔️ Mod install
+
+So you've got a working BepInEx 5 Mono installation running successfully. Now you can download this mods zip file. Unzip the contents into your game directory where you have your `Void Crew.exe`.
+
+You should find the mod installed under `Bepinex\plugins\MavsPlugins\$(MSBuildProjectName)`
+
+&nbsp%3B
+
+### 👋 Shoutout
+
+While I've had many people help me out by offering me feedback on how the balance was feeling and helping me shape the balance that my mods are in, one person in particular has been happy to endure my experiements and many mission fails while I adjusted settings or tried new things. So here's a shoutout to you my friend: `Blaze`. Without your patience, and company I probably wouldn not have put all the hours I've put in making the mods and even writing all the code that builds even these readme files and packaging! 
+
+
+&nbsp%3B
+
+## ⚖️ License
+
+<p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/Maverik/VoidCrewMods">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Maverik">Maverik</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0 <img alt="CC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img alt="BY" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img alt="NC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img alt="SA" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
+
+&nbsp%3B
+
+### 🙏 Wanna say thank you?
+
+I do love a [Starbucks Classic Hot Chocolate](https://www.starbucks.co.uk/menu/product/2039)! If you enjoy my labour of love and would like to support my guilty pleasure, the gesture is highly appreciated!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z6T7OWX)
+
+]]>
+            </ReadmeFooterContent>
+
+        </PropertyGroup>
+
+        <WriteLinesToFile Lines="$(ReadmeHeaderContent);$(ReaderMePluginContent);$(ReadmeFooterContent)" File="$(OutputPath)README.md" Overwrite="true"/>
+        <Copy SourceFiles="$(OutputPath)README.md" DestinationFolder="$(ThunderPackagingPath)" Condition="Exists('$(OutputPath)README.md')" />
+    </Target>
+
+</Project>
