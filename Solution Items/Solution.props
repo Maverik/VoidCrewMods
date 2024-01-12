@@ -11,7 +11,7 @@
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <ProjectDirectoryName>$([System.IO.Path]::GetFileName($(MSBuildProjectDirectory)))</ProjectDirectoryName>
-        <RepositoryUrl>https://github.com/Maverik/VoidCrewMods/blob/main/$(ProjectDirectoryName)</RepositoryUrl>
+        <RepositoryUrl>https://github.com/Maverik/VoidCrewMods/tree/main/$(ProjectDirectoryName)</RepositoryUrl>
         <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <GenerateDependencyFile>false</GenerateDependencyFile>

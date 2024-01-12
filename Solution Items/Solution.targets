@@ -7,23 +7,6 @@
         <Product>Void Crew - $(Title)</Product>
     </PropertyGroup>
 
-    <!-- Source: https://stackoverflow.com/a/66137489/504757 -->
-    <UsingTask TaskName="Eval" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
-        <ParameterGroup>
-            <Lines ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="True"/>
-            <Result ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="True"/>
-        </ParameterGroup>
-        <Task>
-            <Using Namespace="Microsoft.Build.Framework"/>
-            <Code Type="Fragment" Language="cs"><![CDATA[
-            Result = new TaskItem[Lines.Length];
-            for (int i = 0; i < Lines.Length; i++)
-                Result[i] = new TaskItem(Lines[i].ItemSpec);
-            ]]>
-            </Code>
-        </Task>
-    </UsingTask>
-
     <!-- shoutout to https://github.com/Cryptoc1/lc-plugin-sdk/blob/main/src/Sdk/Sdk.targets for this gem -->
     <Target Name="_GeneratePluginInfo" BeforeTargets="BeforeCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)$(MSBuildProjectName).PluginInfo.g.cs">
         <PropertyGroup>
@@ -54,7 +37,7 @@ public static class PluginInfo
     <Target Name="_ThunderStoreDependencies" BeforeTargets="_GeneratePluginManifest" AfterTargets="Build">
         <ItemGroup>
             <ThunderDependency Include="BepInEx-BepInExPack-5.4.2100" Condition="'$(AssemblyName)' == 'MavsLibCore'"/>
-            <ThunderDependency Include="Maverik-MavsLibCore-0.0.1" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
+            <ThunderDependency Include="Maverik-MavsCoreLibrary-0.0.1" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
         </ItemGroup>
     </Target>
 
@@ -64,7 +47,7 @@ public static class PluginInfo
             <_ThunderDependencies>@(ThunderDependency -> '"%(Filename)%(Extension)"')</_ThunderDependencies>
             <_GeneratedManifestText>
                 <![CDATA[{
-    "name": "$(Title.Replace(' ','').Replace('.','_'))",
+    "name": "$(ThunderPackageId)",
     "description": "$(Description)",
     "version_number": "$(Version)",
     "website_url": "$(RepositoryUrl)",
