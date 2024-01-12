@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <Title>Mavs Core Library</Title>
+        <Description>Common functionality for my plugins, including implementing the base plugin structure and custom storage &amp; logging support.</Description>
+        <Version>0.0.1</Version>
+    </PropertyGroup>
+</Project>
