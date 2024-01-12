@@ -9,7 +9,7 @@ While there are other variations of this mod that have been shared on discord, t
 - You don't have to wait on the host to deconstruct things or worse waste ammo because you did not know host was planning to move the gun.
 - It's a lot more resistant to breaking between updates as I'm not editing the game object directly. I simply prevent the game from marking the load out item as permanent fixture and then as it deconstructs, it automatically becomes a normal object that anyone can use.
 
-#### 📀 Install on
+#### 📀 Runs on
 
 - ✅ Host
 - ⬜ Client

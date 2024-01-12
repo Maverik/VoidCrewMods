@@ -44,14 +44,21 @@ You should find the mod installed under `Bepinex\plugins\MavsPlugins\$(MSBuildPr
 
 ### 👋 Shoutout
 
-While I've had many people help me out by offering me feedback on how the balance was feeling and helping me shape the balance that my mods are in, one person in particular has been happy to endure my experiements and many mission fails while I adjusted settings or tried new things. So here's a shoutout to you my friend: `Blaze`. Without your patience, and company I probably wouldn not have put all the hours I've put in making the mods and even writing all the code that builds even these readme files and packaging! 
+While I've had many people help me out by offering me feedback on how the balance was feeling, helping me shape the balance that my mods are in; one person in particular has been happy to endure my experiements and many mission fails while I adjusted settings or tried new things.
+ 
+So here's a shoutout to you my friend: `Blaze`.
 
+Without your patience and company, I probably would not have poured hundreds of hours I've put in making the mods and even writing all the code that builds these readme files or store packaging! 
 
 &nbsp%3B
 
 ## ⚖️ License
 
-<p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/Maverik/VoidCrewMods">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Maverik">Maverik</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0 <img alt="CC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img alt="BY" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img alt="NC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img alt="SA" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/Maverik/VoidCrewMods/tree/main/$(ProjectDirectoryName)">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Maverik">Maverik</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0 <img alt="CC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img alt="BY" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img alt="NC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img alt="SA" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
+
+### ✍️ Source Code
+
+The code for this mod is available at [Github](https://github.com/Maverik/VoidCrewMods/tree/main/$(ProjectDirectoryName))
 
 &nbsp%3B
 
@@ -66,6 +73,7 @@ I do love a [Starbucks Classic Hot Chocolate](https://www.starbucks.co.uk/menu/p
 
         </PropertyGroup>
 
+        <Delete Files="$(OutputPath)README.md;$(ThunderPackagingPath)README.md" />
         <WriteLinesToFile Lines="$(ReadmeHeaderContent);$(ReaderMePluginContent);$(ReadmeFooterContent)" File="$(OutputPath)README.md" Overwrite="true"/>
         <Copy SourceFiles="$(OutputPath)README.md" DestinationFolder="$(ThunderPackagingPath)" Condition="Exists('$(OutputPath)README.md')" />
     </Target>

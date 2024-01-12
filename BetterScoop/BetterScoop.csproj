@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <Title>Better Scoop</Title>
+        <Description>Make the gravity scoop, space worthy.</Description>
+        <Version>0.0.1</Version>
+    </PropertyGroup>
+</Project>
