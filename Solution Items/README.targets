@@ -38,9 +38,7 @@ My mods support configuration through [BepInEx Configuration Manager](https://gi
 
 So you've got a working BepInEx 5 Mono installation running successfully. Now you can download this mods zip file. Unzip the contents into your game directory where you have your `Void Crew.exe`.
 
-You should find the mod installed under `Bepinex\plugins\MavsPlugins\$(MSBuildProjectName)`
-
-&nbsp%3B
+You should find the mod installed under `Bepinex\plugins\MavsPlugins\$(MSBuildProjectName)`.
 
 ### 👋 Shoutout
 

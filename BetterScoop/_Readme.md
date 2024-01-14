@@ -1,13 +1,13 @@
 ﻿&nbsp;
 
-#### 🤔 Why this mod?
+### 🤔 Why this mod?
 
 Ask any pilot and they would tell you the frustration of trying to scoop loot in middle of the combat. What's worse is that you can create infinite tether, if you're boosting and turning. Eventually if you turn the scoop off to reset, you'll send items flying into the sun. If you've never experienced this, count yourself lucky! 
 
-#### ❕Defaults
+### ❕Defaults
 The default scoop has as a pull range of about the size of a destroyer length roughly speaking which really isn't a lot. It's barely responsive and is just outright unusable if you are using my Higher Difficulty mod.
 
-#### 💡With this Mod
+### 💡With this Mod
 The scoop gains powers that make it a pleasure to use finally.
 
 - It is a lot more responsive
@@ -17,7 +17,7 @@ The scoop gains powers that make it a pleasure to use finally.
 
 Once you start using this, you'll wonder how is this not part of the game already 😄
 
-#### 📀 Runs on
+### 📀 Runs on
 
 - ✅ Host
 - ⬜ Client
