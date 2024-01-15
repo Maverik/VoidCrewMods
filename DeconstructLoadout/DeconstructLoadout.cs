@@ -3,7 +3,6 @@ using CG.Ship.Modules.Shield;
 using CG.Ship.Modules.Weapons;
 using CG.Space;
 using Gameplay.CompositeWeapons;
-using UnityEngine;
 
 namespace DeconstructLoadout;
 

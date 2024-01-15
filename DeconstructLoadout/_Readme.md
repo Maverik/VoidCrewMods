@@ -1,4 +1,4 @@
-﻿### 🤔 Why this mod?
+### 🤔 Why this mod?
 
 While there are other variations of this mod that have been shared on discord, the unique thing about my mod is that it actually deconstructs the load out items by asking the game to do it on your behalf rather than editing a deconstruction mechanism directly into the slot.
 
