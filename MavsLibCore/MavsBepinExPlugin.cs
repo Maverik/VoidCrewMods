@@ -1,5 +1,4 @@
 ﻿using BepInEx.Bootstrap;
-using UnityEngine;
 using static HarmonyLib.Harmony;
 
 namespace MavsLibCore;
@@ -11,7 +10,7 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
     [SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "Needed for ref access")]
     protected static byte ExceptionCount;
 
-    string _harmonyPatcherId = default!;
+    string? _harmonyPatcherId;
 
     protected new static MavLogger<T> Logger => MavLogger<T>.Default;
 
@@ -21,7 +20,7 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
     protected static int MaxAllowedExceptionCount { get; set; } = 5;
 
     public static T? Instance { get; protected set; }
-    
+
     protected virtual void Awake() =>
         LoggedExceptions(() =>
         {
@@ -37,7 +36,7 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
             Instance = (T?)this;
 
             Chainloader.ManagerObject.hideFlags = HideFlags.HideAndDontSave;
-            
+
             Logger.LogInfo("Plugin initialized.");
         });
 
@@ -49,7 +48,9 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
         {
             Instance = null;
 
-            UnpatchID(_harmonyPatcherId);
+            if (!string.IsNullOrEmpty(_harmonyPatcherId))
+                UnpatchID(_harmonyPatcherId);
+
             Logger.LogInfo("Plugin has unloaded.");
         });
     }
@@ -104,7 +105,7 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
         LoggedExceptions(() =>
         {
             var store = KVStorage<TConfig, TKey>.Default;
-            
+
             var config = store.Load(referenceConfig.Id);
 
             if (config is null || config.SchemaRevision != referenceConfig.SchemaRevision || !config.Version.Equals(referenceConfig.Version))
@@ -122,4 +123,24 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
 
             return config;
         });
+}
+
+#pragma warning disable BepInEx001
+public abstract class MavsBepInExPlugin<T, TConfig> : MavsBepInExPlugin<T> where T : MavsBepInExPlugin<T>, new() where TConfig : ISupportsConfigFile, new()
+#pragma warning restore BepInEx001
+{
+    protected static TConfig Configuration { get; set; } = new();
+
+    public virtual void Start() => LoggedExceptions(() =>
+    {
+        Logger.LogDebug("Configuration loading...");
+
+        Logger.LogDebug($"Configuration was: {JsonConvert.SerializeObject(Configuration, MavsDefaults.DefaultJsonSerializerOptions)}");
+
+        Configuration.LoadFrom(Config);
+
+        Logger.LogDebug($"Configuration is: {JsonConvert.SerializeObject(Configuration, MavsDefaults.DefaultJsonSerializerOptions)}");
+
+        Logger.LogInfo("Configuration loaded.");
+    });
 }

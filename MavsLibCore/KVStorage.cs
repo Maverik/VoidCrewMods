@@ -1,19 +1,8 @@
-﻿using Newtonsoft.Json.Serialization;
-
-namespace MavsLibCore;
+﻿namespace MavsLibCore;
 
 // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
 public class KVStorage<T, TKey> where T : IKey<TKey> where TKey : IEquatable<TKey>
 {
-    public static JsonSerializerSettings DefaultJsonSerializerOptions { get; } = new()
-    {
-        EqualityComparer = StructuralComparisons.StructuralEqualityComparer,
-        ContractResolver = new CamelCasePropertyNamesContractResolver(),
-        Formatting = Formatting.Indented,
-        NullValueHandling = NullValueHandling.Ignore,
-        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-    };
-
     public static MavLogger<T> Logger => MavLogger<T>.Default;
 
     public static KVStorage<T, TKey> Default { get; } = new();
@@ -31,7 +20,7 @@ public class KVStorage<T, TKey> where T : IKey<TKey> where TKey : IEquatable<TKe
 
             var jsonContent = reader.ReadToEnd();
 
-            return JsonConvert.DeserializeObject<T>(jsonContent, DefaultJsonSerializerOptions);
+            return JsonConvert.DeserializeObject<T>(jsonContent, MavsDefaults.DefaultJsonSerializerOptions);
         });
 
     public bool Store(T entry) =>
@@ -41,7 +30,7 @@ public class KVStorage<T, TKey> where T : IKey<TKey> where TKey : IEquatable<TKe
             using var stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
             using var writer = new StreamWriter(stream, Encoding.UTF8);
 
-            var jsonContent = JsonConvert.SerializeObject(entry, DefaultJsonSerializerOptions);
+            var jsonContent = JsonConvert.SerializeObject(entry, MavsDefaults.DefaultJsonSerializerOptions);
 
             writer.Write(jsonContent);
             writer.Flush();

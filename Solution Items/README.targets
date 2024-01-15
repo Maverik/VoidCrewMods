@@ -1,11 +1,9 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Target Name="_GenerateReadme" AfterTargets="Build" Inputs="$(MSBuildAllProjects)" Outputs="$(ThunderPackagingPath)README.md;$(OutputPath)README.md">
+    <Target Name="_GenerateReadme" AfterTargets="_GeneratePluginManifest" Inputs="$(MSBuildAllProjects)" Outputs="$(ThunderPackagingPath)README.md;$(OutputPath)README.md">
         <PropertyGroup>
             <ReaderMePluginContent Condition="'$(ReaderMePluginContent)' == '' and Exists('$(ProjectDir)_README.md')">$([System.IO.File]::ReadAllText('$(ProjectDir)_README.md'))</ReaderMePluginContent>
             <ReadmeHeaderContent><![CDATA[
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%2520BY--NC--SA%25204.0-orange.svg?logo=creativecommons&link=https://creativecommons.org/licenses/by-nc-sa/4.0/)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
----
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%2520BY--NC--SA%25204.0-orange.svg?style=for-the-badge&logo=creativecommons&link=https://creativecommons.org/licenses/by-nc-sa/4.0/)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 # $(Product)
 
@@ -16,6 +14,7 @@ $(Description)
 ]]>
             </ReadmeHeaderContent>
             <ReadmeFooterContent><![CDATA[
+
 &nbsp%3B
 
 ## ⏬ Manual Install
@@ -42,7 +41,7 @@ You should find the mod installed under `Bepinex\plugins\MavsPlugins\$(MSBuildPr
 
 ### 👋 Shoutout
 
-While I've had many people help me out by offering me feedback on how the balance was feeling, helping me shape the balance that my mods are in; one person in particular has been happy to endure my experiements and many mission fails while I adjusted settings or tried new things.
+While I've had many people help me out by offering me feedback on how the balance was feeling, helping me shape the balance that my mods are in; one person in particular has been happy to endure my experiments and many mission fails while I adjusted settings or tried new things.
  
 So here's a shoutout to you my friend: `Blaze`.
 
@@ -52,13 +51,11 @@ Without your patience and company, I probably would not have poured hundreds of 
 
 ## ⚖️ License
 
-<p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/Maverik/VoidCrewMods/tree/main/$(ProjectDirectoryName)">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Maverik">Maverik</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0 <img alt="CC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img alt="BY" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img alt="NC" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img alt="SA" height="22px" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/Maverik/VoidCrewMods/tree/main/$(ProjectDirectoryName)">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Maverik">Maverik</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block%3B">CC BY-NC-SA 4.0 <img alt="CC" height="22px" style="height:22px!important%3Bmargin-left:3px%3Bvertical-align:text-bottom%3B" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img alt="BY" height="22px" style="height:22px!important%3Bmargin-left:3px%3Bvertical-align:text-bottom%3B" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img alt="NC" height="22px" style="height:22px!important%3Bmargin-left:3px%3Bvertical-align:text-bottom%3B" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img alt="SA" height="22px" style="height:22px!important%3Bmargin-left:3px%3Bvertical-align:text-bottom%3B" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
 
 ### ✍️ Source Code
 
 The code for this mod is available at [Github](https://github.com/Maverik/VoidCrewMods/tree/main/$(ProjectDirectoryName))
-
-&nbsp%3B
 
 ### 🙏 Wanna say thank you?
 

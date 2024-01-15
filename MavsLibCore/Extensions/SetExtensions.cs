@@ -1,6 +1,5 @@
 ﻿using System.Linq.Expressions;
 using BepInEx.Logging;
-using Gameplay.Utilities;
 
 namespace MavsLibCore;
 
@@ -134,6 +133,8 @@ public static class SetExtensions
 
             return instance;
         }
+
+        if (Equals(instance.Value, value)) return instance;
 
         if (fieldName is "__instance" or "__result") fieldName = typeof(TInstance).Name;
 

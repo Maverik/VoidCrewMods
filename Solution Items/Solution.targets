@@ -33,11 +33,15 @@ public static class PluginInfo
         </ItemGroup>
         <WriteLinesToFile Lines="$(_GeneratedPluginInfoText)" File="$(_GeneratedPluginInfoPath)" Overwrite="true"/>
     </Target>
+    
+    <Target Name="Clean">
+        <RemoveDir Directories="$(GamePath)Bepinex\plugins\MavsPlugins" />
+    </Target>
 
     <Target Name="_ThunderStoreDependencies" BeforeTargets="_GeneratePluginManifest" AfterTargets="Build">
         <ItemGroup>
             <ThunderDependency Include="BepInEx-BepInExPack-5.4.2100" Condition="'$(AssemblyName)' == 'MavsLibCore'"/>
-            <ThunderDependency Include="Maverik-MavsCoreLibrary-0.0.1" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
+            <ThunderDependency Include="Maverik-MavsCoreLibrary-0.0.2" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
         </ItemGroup>
     </Target>
 
@@ -58,24 +62,27 @@ public static class PluginInfo
 
         <WriteLinesToFile Lines="$(_GeneratedManifestText)" File="$(ThunderPackagingPath)manifest.json" WriteOnlyWhenDifferent="true" Overwrite="true"/>
     </Target>
+    
+    <Target Name="_CopyPluginIcons" AfterTargets="_GeneratePluginManifest" Outputs="$(ThunderPackagingPath)icon.png">
+        <PropertyGroup>
+            <PackageIcon Condition="Exists('$(ProjectDir)icon.png')">$(ProjectDir)icon.png</PackageIcon>
+            <PackageIcon Condition="'$(PackageIcon)' == ''">$(DefaultPackageIcon)</PackageIcon>
+        </PropertyGroup>
+        <Copy SourceFiles="$(PackageIcon)" DestinationFolder="$(ThunderPackagingPath)"/>
+    </Target>
+
+    <Target Name="_CopyChangelog" AfterTargets="_GeneratePluginManifest" Outputs="$(ThunderPackagingPath)CHANGELOG.md">
+        <Copy Condition="Exists('$(ProjectDir)CHANGELOG.md')" SourceFiles="$(ProjectDir)CHANGELOG.md" DestinationFolder="$(ThunderPackagingPath)"/>
+    </Target>
 
     <Import Project="$(SolutionItemsDir)README.targets" />
     
-    <Target Name="_CopyPluginIcons" AfterTargets="_GeneratePluginManifest">
-        <ItemGroup>
-            <PackageIcon Condition="Exists('$(ProjectDir)icon.png')" Include="$(ProjectDir)icon.png"/>
-            <PackageIcon Condition="!Exists('$(ThunderPackagingRoot)$(PackageId).png')" Include="$(DefaultPackageIcon)"/>
-        </ItemGroup>
-        <Message Importance="High" Text="$(PackageIcon)"/>
-        <Copy SourceFiles="@(PackageIcon)" DestinationFiles="@(PackageIcon->'$(ThunderPackagingPath)icon%(extension)')"/>
-    </Target>
-
     <Target Name="_PackageForThunderStore" AfterTargets="_GenerateReadme;_GeneratePluginManifest;_CopyPluginIcons">
         <ZipDirectory SourceDirectory="$(ThunderPackagingPath)" DestinationFile="$(ThunderPackagingRoot)$(PackageId).zip" Overwrite="true" Condition="Exists('$(ThunderPackagingPath)')" />
     </Target>
 
     <Target Name="_StagePackageForThunderStore" AfterTargets="_PackageForThunderStore">
         <Unzip SourceFiles="$(ThunderPackagingRoot)$(PackageId).zip" DestinationFolder="$(GamePath)" Condition="Exists('$(ThunderPackagingRoot)$(PackageId).zip')" />
-        <Delete Files="$(GamePath)manifest.json;$(GamePath)icon.png;$(GamePath)README.md" /> 
+        <Delete Files="$(GamePath)manifest.json;$(GamePath)icon.png;$(GamePath)README.md;$(GamePath)CHANGELOG.md" /> 
     </Target>
 </Project>
