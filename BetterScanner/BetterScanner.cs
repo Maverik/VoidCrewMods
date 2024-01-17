@@ -12,15 +12,15 @@ sealed class BetterScanner : MavsBepInExPlugin<BetterScanner, PluginConfiguratio
 
     public override string Id => PluginInfo.PackageId;
 
-    [HarmonyPostfix]
+    [HarmonyPrefix]
     [HarmonyPatch(typeof(ScanComponent), "Awake")]
-    static void ScanComponentCtorPostfix(ScanComponent __instance) => LoggedExceptions(() =>
+    static void ScanComponentAwakePrefix(ScanComponent __instance) => LoggedExceptions(() =>
     {
+        __instance.Set(x => x.HelmScanningRange, _ => Configuration.HelmScanningRange, Logger, "ScanComponent");
+
         if (PhotonNetwork.IsMasterClient)
             ClientGame.Current.PlayerShip.Set(x => x.passiveScanRadius, _ => Configuration.PassiveScanningRange, Logger);
 
-        __instance.Set(x => x.HelmScanningRange, _ => Configuration.HelmScanningRange, Logger);
-        
         Logger.LogMessage("Helm Scanning Range successfully supercharged!");
     });
 }

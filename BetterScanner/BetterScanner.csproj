@@ -2,6 +2,6 @@
     <PropertyGroup>
         <Title>Better Scanner</Title>
         <Description>Adds more range for the helm scanning function.</Description>
-        <Version>0.0.1</Version>
+        <Version>0.0.2</Version>
     </PropertyGroup>
 </Project>

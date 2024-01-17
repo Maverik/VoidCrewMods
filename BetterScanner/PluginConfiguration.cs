@@ -15,6 +15,8 @@ sealed class PluginConfiguration : ISupportsConfigFile
             .Value;
     }
 
+    public ulong SettingsVersion { get; set; }
+
     public float HelmScanningRange { get; set; } = 3000f;
 
     public float PassiveScanningRange { get; set; } = 150f;
