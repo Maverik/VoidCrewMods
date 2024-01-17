@@ -60,6 +60,8 @@ sealed class HigherDifficulty : MavsBepInExPlugin<HigherDifficulty, PluginConfig
         assetConfig.EnemyHpMultiplier.Set(config.EnemyHpMultiplier, Logger, $"{difficulty} EnemyHpMultiplier");
         assetConfig.PlayerShipDamageMultiplier.Set(config.PlayerShipDamageMultiplier, Logger, $"{difficulty} PlayerShipDamageMultiplier");
         assetConfig.SpawnGroupAmountMultiplier.Set(config.SpawnGroupAmountMultiplier, Logger, $"{difficulty} SpawnGroupAmountMultiplier");
+        
+        Logger.LogDebug($"Config effective requested increase: {config}");
 
         rac = ResourceAssetContainer<QuestDifficultyContainer, QuestDifficulty, QuestDifficultyDef>.Instance.GetConfig(difficulty);
 

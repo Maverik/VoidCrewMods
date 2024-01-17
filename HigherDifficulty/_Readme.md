@@ -20,26 +20,26 @@ The difficulty settings will be remapped as follows:
 | Veteran Difficulty    |  Old |  New |
 |:----------------------|-----:|-----:|
 | Enemy HP              | -25% |  15% |
-| Player Ship Damage    | -25% |  15% |
-| Spawn Group Amount    |   0% | 100% |
-| Effective difficulty  |  56% | 265% |
-| 🔼 Challenge Increase |   🎯 | 470% |
+| Player Ship Damage    | -25% |  12% |
+| Spawn Group Amount    |   0% |  75% |
+| Effective difficulty  |  56% | 225% |
+| 🔼 Challenge Increase |   🎯 | 401% |
 
 | Expert Difficulty     |  Old |  New |
 |:----------------------|-----:|-----:|
-| Enemy HP              |   0% |  25% |
-| Player Ship Damage    |   0% |  33% |
-| Spawn Group Amount    |   0% | 225% |
-| Effective difficulty  | 100% | 538% |
-| 🔼 Challenge Increase |   🎯 | 538% |
+| Enemy HP              |   0% |  20% |
+| Player Ship Damage    |   0% |  34% |
+| Spawn Group Amount    |   0% | 150% |
+| Effective difficulty  | 100% | 402% |
+| 🔼 Challenge Increase |   🎯 | 402% |
 
-| Insane Difficulty     |  Old |   New |
-|:----------------------|-----:|------:|
-| Enemy HP              | -25% |   25% |
-| Player Ship Damage    | -25% |   50% |
-| Spawn Group Amount    |   0% |  225% |
-| Effective difficulty  |  56% |  609% |
-| 🔼 Challenge Increase |   🎯 | 1083% |
+| Insane Difficulty     |  Old |  New |
+|:----------------------|-----:|-----:|
+| Enemy HP              |  25% |  30% |
+| Player Ship Damage    |  25% |  50% |
+| Spawn Group Amount    |   0% | 225% |
+| Effective difficulty  | 156% | 634% |
+| 🔼 Challenge Increase |   🎯 | 406% |
 
 ### 📀 Runs on
 
