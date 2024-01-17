@@ -33,15 +33,15 @@ public static class PluginInfo
         </ItemGroup>
         <WriteLinesToFile Lines="$(_GeneratedPluginInfoText)" File="$(_GeneratedPluginInfoPath)" Overwrite="true"/>
     </Target>
-    
+
     <Target Name="Clean">
-        <RemoveDir Directories="$(GamePath)Bepinex\plugins\MavsPlugins" />
+        <RemoveDir Directories="$(GamePath)Bepinex\plugins\MavsPlugins" Condition="Exists('$(GamePath)Bepinex\plugins\MavsPlugins')"/>
     </Target>
 
     <Target Name="_ThunderStoreDependencies" BeforeTargets="_GeneratePluginManifest" AfterTargets="Build">
         <ItemGroup>
             <ThunderDependency Include="BepInEx-BepInExPack-5.4.2100" Condition="'$(AssemblyName)' == 'MavsLibCore'"/>
-            <ThunderDependency Include="Maverik-MavsCoreLibrary-0.0.2" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
+            <ThunderDependency Include="Maverik-MavsCoreLibrary-0.0.3" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
         </ItemGroup>
     </Target>
 
@@ -62,7 +62,7 @@ public static class PluginInfo
 
         <WriteLinesToFile Lines="$(_GeneratedManifestText)" File="$(ThunderPackagingPath)manifest.json" WriteOnlyWhenDifferent="true" Overwrite="true"/>
     </Target>
-    
+
     <Target Name="_CopyPluginIcons" AfterTargets="_GeneratePluginManifest" Outputs="$(ThunderPackagingPath)icon.png">
         <PropertyGroup>
             <PackageIcon Condition="Exists('$(ProjectDir)icon.png')">$(ProjectDir)icon.png</PackageIcon>
@@ -75,14 +75,17 @@ public static class PluginInfo
         <Copy Condition="Exists('$(ProjectDir)CHANGELOG.md')" SourceFiles="$(ProjectDir)CHANGELOG.md" DestinationFolder="$(ThunderPackagingPath)"/>
     </Target>
 
-    <Import Project="$(SolutionItemsDir)README.targets" />
-    
+    <Import Project="$(SolutionItemsDir)README.targets"/>
+
     <Target Name="_PackageForThunderStore" AfterTargets="_GenerateReadme;_GeneratePluginManifest;_CopyPluginIcons">
-        <ZipDirectory SourceDirectory="$(ThunderPackagingPath)" DestinationFile="$(ThunderPackagingRoot)$(PackageId).zip" Overwrite="true" Condition="Exists('$(ThunderPackagingPath)')" />
+        <ZipDirectory SourceDirectory="$(ThunderPackagingPath)" DestinationFile="$(ThunderPackagingRoot)$(PackageId).zip" Overwrite="true" Condition="Exists('$(ThunderPackagingPath)')"/>
     </Target>
 
     <Target Name="_StagePackageForThunderStore" AfterTargets="_PackageForThunderStore">
-        <Unzip SourceFiles="$(ThunderPackagingRoot)$(PackageId).zip" DestinationFolder="$(GamePath)" Condition="Exists('$(ThunderPackagingRoot)$(PackageId).zip')" />
-        <Delete Files="$(GamePath)manifest.json;$(GamePath)icon.png;$(GamePath)README.md;$(GamePath)CHANGELOG.md" /> 
+        <Unzip SourceFiles="$(ThunderPackagingRoot)$(PackageId).zip" DestinationFolder="$(GamePath)" Condition="Exists('$(ThunderPackagingRoot)$(PackageId).zip')"/>
+    </Target>
+
+    <Target Name="_CleanupLeftoversPostStaging" AfterTargets="_StagePackageForThunderStore">
+        <Delete Files="$(GamePath)manifest.json;$(GamePath)icon.png;$(GamePath)README.md;$(GamePath)CHANGELOG.md"/>
     </Target>
 </Project>

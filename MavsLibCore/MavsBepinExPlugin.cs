@@ -131,16 +131,37 @@ public abstract class MavsBepInExPlugin<T, TConfig> : MavsBepInExPlugin<T> where
 {
     protected static TConfig Configuration { get; set; } = new();
 
-    public virtual void Start() => LoggedExceptions(() =>
-    {
-        Logger.LogDebug("Configuration loading...");
+    public virtual void Start() =>
+        LoggedExceptions(() =>
+        {
+            Logger.LogDebug($"Configuration was: {JsonConvert.SerializeObject(Configuration, MavsDefaults.DefaultJsonSerializerOptions)}");
 
-        Logger.LogDebug($"Configuration was: {JsonConvert.SerializeObject(Configuration, MavsDefaults.DefaultJsonSerializerOptions)}");
+            var currentSettingsVersion = Configuration.SettingsVersion;
 
-        Configuration.LoadFrom(Config);
+            Logger.LogDebug($"Current Version: {currentSettingsVersion}");
 
-        Logger.LogDebug($"Configuration is: {JsonConvert.SerializeObject(Configuration, MavsDefaults.DefaultJsonSerializerOptions)}");
+            if (currentSettingsVersion > 0)
+            {
+                var savedSettingsVersion = Config.Bind(ISupportsConfigFile.SettingsVersionConfigDefinition, 0ul, ISupportsConfigFile.SettingsVersionConfigDescription);
 
-        Logger.LogInfo("Configuration loaded.");
-    });
+                Logger.LogDebug($"Saved Version: {savedSettingsVersion.Value}");
+
+                if (currentSettingsVersion != savedSettingsVersion.Value)
+                {
+                    Logger.LogInfo($"Configuration version mismatch. Was: '{savedSettingsVersion.Value}', expected: '{currentSettingsVersion}'. Forcing reset.");
+
+                    using var stream = new FileStream(Config.ConfigFilePath, FileMode.Create);
+                    stream.Close();
+                    
+                    Config.Reload();
+                    
+                    savedSettingsVersion.Value = currentSettingsVersion;
+                }
+            }
+
+            Configuration.LoadFrom(Config);
+
+            Logger.LogDebug($"Configuration is: {JsonConvert.SerializeObject(Configuration, MavsDefaults.DefaultJsonSerializerOptions)}");
+            Logger.LogInfo("Configuration loaded.");
+        });
 }

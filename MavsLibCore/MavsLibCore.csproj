@@ -2,6 +2,6 @@
     <PropertyGroup>
         <Title>Mavs Core Library</Title>
         <Description>Common functionality for my plugins, including implementing the base plugin structure and custom storage &amp; logging support.</Description>
-        <Version>0.0.2</Version>
+        <Version>0.0.3</Version>
     </PropertyGroup>
 </Project>

@@ -22,6 +22,8 @@ sealed class PluginConfiguration() : ISupportsConfigFile
             .Value;
     }
 
+    public ulong SettingsVersion { get; set; }
+
     public float AbsorptionRate { get; set; } = 0.5f;
 
     public float RechargeSpeed { get; set; } = 1f;

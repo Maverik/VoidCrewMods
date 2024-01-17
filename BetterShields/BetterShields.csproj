@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <Title>Better Shields</Title>
-        <Description>Reverts shields to be 100% absorbant and more durable</Description>
-        <Version>0.0.1</Version>
+        <Description>Reverts shields to be 100% absorbant and more durable.</Description>
+        <Version>0.0.2</Version>
     </PropertyGroup>
 </Project>
