@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F3D3877-AF3F-47B8-A106-890D2710A420}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+		.gitignore = .gitignore
+		global.json = global.json
+		Solution Items\GlobalUsings.cs = Solution Items\GlobalUsings.cs
+		Solution Items\icon.png = Solution Items\icon.png
+		Solution Items\LICENSE = Solution Items\LICENSE
+		Solution Items\README.targets = Solution Items\README.targets
+		Solution Items\Solution.props = Solution Items\Solution.props
+		Solution Items\Solution.targets = Solution Items\Solution.targets
+		Solution Items\README.md = Solution Items\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MavsLibCore", "MavsLibCore\MavsLibCore.csproj", "{7C780F76-D938-424D-A7EF-E58C3B78E213}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeconstructLoadout", "DeconstructLoadout\DeconstructLoadout.csproj", "{F1A6E089-25B8-4FD4-8796-AA25C97D13C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterScanner", "BetterScanner\BetterScanner.csproj", "{1CA29AE0-E8B9-4FDC-B778-48A891D556A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterScoop", "BetterScoop\BetterScoop.csproj", "{9B706970-0AB0-4113-B80C-33A7DBAB7E01}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterShields", "BetterShields\BetterShields.csproj", "{9DAAE831-118F-44E5-89F7-BBABCDEBE7A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HigherDifficulty", "HigherDifficulty\HigherDifficulty.csproj", "{35B444CA-8A6B-4AA7-BDD6-63DB7A9B5321}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C780F76-D938-424D-A7EF-E58C3B78E213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C780F76-D938-424D-A7EF-E58C3B78E213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C780F76-D938-424D-A7EF-E58C3B78E213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C780F76-D938-424D-A7EF-E58C3B78E213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A6E089-25B8-4FD4-8796-AA25C97D13C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A6E089-25B8-4FD4-8796-AA25C97D13C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A6E089-25B8-4FD4-8796-AA25C97D13C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A6E089-25B8-4FD4-8796-AA25C97D13C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CA29AE0-E8B9-4FDC-B778-48A891D556A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CA29AE0-E8B9-4FDC-B778-48A891D556A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CA29AE0-E8B9-4FDC-B778-48A891D556A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CA29AE0-E8B9-4FDC-B778-48A891D556A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B706970-0AB0-4113-B80C-33A7DBAB7E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B706970-0AB0-4113-B80C-33A7DBAB7E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B706970-0AB0-4113-B80C-33A7DBAB7E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B706970-0AB0-4113-B80C-33A7DBAB7E01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DAAE831-118F-44E5-89F7-BBABCDEBE7A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DAAE831-118F-44E5-89F7-BBABCDEBE7A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DAAE831-118F-44E5-89F7-BBABCDEBE7A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DAAE831-118F-44E5-89F7-BBABCDEBE7A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B444CA-8A6B-4AA7-BDD6-63DB7A9B5321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B444CA-8A6B-4AA7-BDD6-63DB7A9B5321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B444CA-8A6B-4AA7-BDD6-63DB7A9B5321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B444CA-8A6B-4AA7-BDD6-63DB7A9B5321}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal
