@@ -15,10 +15,12 @@ sealed class BetterScoop : MavsBepInExPlugin<BetterScoop, PluginConfiguration>
 
     static readonly HashSet<GUIDUnion> _assetGuidBlacklist =
     [
-        // Power Fuse - ec0fc0790a706ef4facab39da5d9de04
+        // Power Fuse - ec0fc0790a706ef4facab39da5d9de04 - Prefabs/Space Objects/Carryables/Item_PowerFuse
         new("ec0fc0790a706ef4facab39da5d9de04"),
-        // Oxygen Tank - 6c37b5363f7ef7844881a301dca76572
-        new("6c37b5363f7ef7844881a301dca76572")
+        // Oxygen Tank - 6c37b5363f7ef7844881a301dca76572 - Prefabs/Space Objects/Carryables/Item_OxygenTank
+        new("6c37b5363f7ef7844881a301dca76572"),
+        // Lure - 8124ed58f064e384cb0314005b84be1b - Prefabs/Space Objects/Carryables/Item_EnemyLurer_Small
+        new("8124ed58f064e384cb0314005b84be1b")
     ];
 
     public override string DisplayName => PluginInfo.Title;

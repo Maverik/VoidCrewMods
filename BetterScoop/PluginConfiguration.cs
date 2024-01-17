@@ -42,6 +42,8 @@ sealed class PluginConfiguration() : ISupportsConfigFile
         PullMissionItems = config.Bind(MavsDefaults.ConfigSectionName, nameof(PullMissionItems), false, "This setting controls if the scoop should pull mission items like power fuses & oxygen tank").Value;
     }
 
+    public ulong SettingsVersion { get; set; }
+
     public bool PullMissionItems { get; set; }
 
     public float ItemSearchInterval { get; set; } = 0.25f;
