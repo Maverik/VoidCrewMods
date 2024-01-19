@@ -1,0 +1,20 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!-- shoutout to https://github.com/Cryptoc1/lc-plugin-sdk/blob/main/src/Sdk/Sdk.targets for this gem -->
+    <Target Name="_GeneratePluginManifest" AfterTargets="Build" Inputs="$(MSBuildAllProjects)" Outputs="$(ThunderPackagingPath)manifest.json">
+        <PropertyGroup>
+            <_ThunderDependencies>@(ThunderDependency -> '"%(Filename)%(Extension)"')</_ThunderDependencies>
+            <_GeneratedManifestText>
+                <![CDATA[{
+    "name": "$(ThunderPackageId)",
+    "description": "$(Description)",
+    "version_number": "$(Version)",
+    "website_url": "$(RepositoryUrl)",
+    "dependencies": [$(_ThunderDependencies.Replace('%3B', ','))],
+    "author": "$(Authors)"
+}]]>
+            </_GeneratedManifestText>
+        </PropertyGroup>
+
+        <WriteLinesToFile Lines="$(_GeneratedManifestText)" File="$(ThunderPackagingPath)manifest.json" WriteOnlyWhenDifferent="true" Overwrite="true"/>
+    </Target>
+</Project>

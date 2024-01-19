@@ -33,7 +33,7 @@ sealed class PluginConfiguration : ISupportsConfigFile
 
     public DifficultyConfig Insane { get; } = new() { EnemyHpMultiplier = 0.25f, PlayerShipDamageMultiplier = 0.25f };
 
-    internal class DifficultyConfig
+    internal sealed class DifficultyConfig
     {
         public float EnemyHpMultiplier { get; set; }
 
@@ -55,7 +55,7 @@ sealed class PluginConfiguration : ISupportsConfigFile
                         new ConfigurationManagerAttributes
                         {
                             IsAdvanced = true,
-                            Order = (int)Difficulty.Normal << (int)Difficulty.Normal + 2,
+                            Order = 2,
                             DefaultValue = 0f,
                         }));
 
@@ -66,7 +66,7 @@ sealed class PluginConfiguration : ISupportsConfigFile
                         new ConfigurationManagerAttributes
                         {
                             IsAdvanced = true,
-                            Order = (int)Difficulty.Normal << (int)Difficulty.Normal + 1,
+                            Order = 1,
                             DefaultValue = 0f,
                         }));
 
@@ -76,9 +76,7 @@ sealed class PluginConfiguration : ISupportsConfigFile
                         new AcceptableValueRange<float>(0f, 0.5f),
                         new ConfigurationManagerAttributes
                         {
-                            IsAdvanced = true,
-                            Order = (int)Difficulty.Normal << (int)Difficulty.Normal,
-                            DefaultValue = 0f,
+                            IsAdvanced = true, DefaultValue = 0f,
                         }));
         }
 
@@ -148,8 +146,7 @@ sealed class PluginConfiguration : ISupportsConfigFile
                         new AcceptableValueRange<float>(0f, 1.5f),
                         new ConfigurationManagerAttributes
                         {
-                            IsAdvanced = true,
-                            DefaultValue = 1.5f,
+                            IsAdvanced = true, DefaultValue = 1.5f,
                         }));
         }
 
@@ -183,8 +180,7 @@ sealed class PluginConfiguration : ISupportsConfigFile
                         new AcceptableValueRange<float>(0f, 2.25f),
                         new ConfigurationManagerAttributes
                         {
-                            IsAdvanced = true,
-                            DefaultValue = 2.25f,
+                            IsAdvanced = true, DefaultValue = 2.25f,
                         }));
         }
     }

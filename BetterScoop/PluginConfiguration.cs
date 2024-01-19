@@ -26,17 +26,17 @@ sealed class PluginConfiguration() : ISupportsConfigFile
 
         PullVelocity = config.Bind(MavsDefaults.ConfigSectionName, nameof(PullVelocity), 150f,
                 new ConfigDescription("Determines how quickly the items travel to the scoop once linked. Game default is 15 meters per second",
-                    new AcceptableValueRange<float>(15f, 250f), new ConfigurationManagerAttributes { IsAdvanced = true }))
+                    new AcceptableValueRange<float>(Mathf.Max(50f, MaxRange / 5f), Mathf.Min(250f, MaxRange / 3f)), new ConfigurationManagerAttributes { IsAdvanced = true }))
             .Value;
 
         InheritVelocityValue = config.Bind(MavsDefaults.ConfigSectionName, nameof(InheritVelocityValue), 0.01f,
                 new ConfigDescription("Determines how much of the ship velocity is transferred to loot before scoop starts accelerating it towards itself. Game default is 0.85 or 85%.",
-                    new AcceptableValueRange<float>(0.01f, 1f), new ConfigurationManagerAttributes { IsAdvanced = true }))
+                    new AcceptableValueRange<float>(0.01f, 0.85f), new ConfigurationManagerAttributes { IsAdvanced = true }))
             .Value;
 
         CatchRadius = config.Bind(MavsDefaults.ConfigSectionName, nameof(CatchRadius), 9f,
                 new ConfigDescription("Determines when the item is considered to be close enough to just dock into the scoop. Game default is 3 meters.",
-                    new AcceptableValueRange<float>(3f, 12f), new ConfigurationManagerAttributes { IsAdvanced = true, ReadOnly = true }))
+                    new AcceptableValueRange<float>(3f, 9f), new ConfigurationManagerAttributes { IsAdvanced = true, ReadOnly = true }))
             .Value;
 
         PullMissionItems = config.Bind(MavsDefaults.ConfigSectionName, nameof(PullMissionItems), false, "This setting controls if the scoop should pull mission items like power fuses & oxygen tank").Value;

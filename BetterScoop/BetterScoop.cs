@@ -20,7 +20,9 @@ sealed class BetterScoop : MavsBepInExPlugin<BetterScoop, PluginConfiguration>
         // Oxygen Tank - 6c37b5363f7ef7844881a301dca76572 - Prefabs/Space Objects/Carryables/Item_OxygenTank
         new("6c37b5363f7ef7844881a301dca76572"),
         // Lure - 8124ed58f064e384cb0314005b84be1b - Prefabs/Space Objects/Carryables/Item_EnemyLurer_Small
-        new("8124ed58f064e384cb0314005b84be1b")
+        new("8124ed58f064e384cb0314005b84be1b"),
+        // Lure - ee69440bbce371e458daeba6eee12a49 - Prefabs/Space Objects/Carryables/Item_EnemyLurer
+        new("ee69440bbce371e458daeba6eee12a49")
     ];
 
     public override string DisplayName => PluginInfo.Title;
@@ -61,6 +63,15 @@ sealed class BetterScoop : MavsBepInExPlugin<BetterScoop, PluginConfiguration>
         LoggedExceptions(() =>
         {
             if (!Configuration.PullMissionItems) carryables.RemoveAll(x => _assetGuidBlacklist.Contains(x.assetGuid));
+
+            Logger.LogDebug(JsonConvert.SerializeObject(carryables.Select(x => new
+            {
+                x.DisplayName,
+                x.ContextInfo.HeaderText,
+                x.assetGuid,
+                x.UseCollision,
+                x.ContainerGuid
+            })));
         });
     }
 }
