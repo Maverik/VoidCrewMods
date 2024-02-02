@@ -54,15 +54,15 @@ sealed class BetterScoop : MavsBepInExPlugin<BetterScoop, PluginConfiguration>
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(CarryableAttractor), "GetPossibleItemsToAttrack")]
-    static void CarryableAttractorGetPossibleItemsToAttrackPostfix(ref List<AbstractCarryableObject> __result)
-    {
-        if (__result.Count == 0) return;
+    static List<AbstractCarryableObject> CarryableAttractorGetPossibleItemsToAttrackPostfix(List<AbstractCarryableObject> __result) =>
+        (__result.Count == 0
+            ? __result
+            : LoggedExceptions(() =>
+            {
+                if (!Configuration.PullMissionItems) __result.RemoveAll(x => _assetGuidBlacklist.Contains(x.assetGuid));
 
-        var carryables = __result;
-
-        LoggedExceptions(() =>
-        {
-            if (!Configuration.PullMissionItems) carryables.RemoveAll(x => _assetGuidBlacklist.Contains(x.assetGuid));
+                foreach (var item in __result)
+                    item.UseCollision = true;
 
             Logger.LogDebug(JsonConvert.SerializeObject(carryables.Select(x => new
             {
@@ -74,4 +74,17 @@ sealed class BetterScoop : MavsBepInExPlugin<BetterScoop, PluginConfiguration>
             })));
         });
     }
+#if DEBUG
+                Logger.LogDebug(JsonConvert.SerializeObject(__result.Select(x => new
+                {
+                    x.DisplayName,
+                    x.ContextInfo.HeaderText,
+                    x.assetGuid,
+                    x.UseCollision,
+                    ColliderSizes = string.Join(',', x.Colliders.OfType<BoxCollider>().Select(xx => xx.size)),
+                    x.ContainerGuid
+                })));
+#endif
+                return __result;
+            }))!;
 }

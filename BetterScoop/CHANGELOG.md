@@ -2,6 +2,7 @@
 
 ## 0.0.4
 - Clamp the acceptable value for PullVelocity to MaxRange
+- Add second lure id in exclusion list for scoop
 
 ## 0.0.3
 - Linked to Maverik-MavsCoreLibrary-0.0.3
