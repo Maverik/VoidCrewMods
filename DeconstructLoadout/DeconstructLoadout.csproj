@@ -2,6 +2,6 @@
     <PropertyGroup>
         <Title>Deconstruct Loadout</Title>
         <Description>Automatically deconstruct ship's loadout as you spawn.</Description>
-        <Version>0.0.3</Version>
+        <Version>0.0.4</Version>
     </PropertyGroup>
 </Project>

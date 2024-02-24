@@ -35,7 +35,7 @@ sealed class DeconstructLoadout : MavsBepInExPlugin<DeconstructLoadout>
                         case ShieldModule:
                             cell.BuildingConstraints.allowDeconstruction = true;
                             BuildProcessController.Instance.DeconstructModule(cell);
-                            Logger.LogMessage($"{cell.ContextInfo.HeaderText} is being deconstructed: {cell.IsBeingDeconstructed}");
+                            Logger.LogMessage($"{cell.ContextInfo.Header} is being deconstructed: {cell.IsBeingDeconstructed}");
 
                             break;
                     }
