@@ -34,7 +34,8 @@
         <OutputPath>$(ThunderPackagingPath)</OutputPath>
         <DefaultPackageIcon>$(SolutionItemsDir)icon.png</DefaultPackageIcon>
         <GamePath>$([MSBuild]::GetRegistryValue(`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 1063420`, `InstallLocation`))\</GamePath>
-        <GamePath Condition="'$(GamePath)' == ''">Only needed if game cannot be autodetected from steam install</GamePath>
+        <!-- Only needed if game cannot be autodetected from steam install -->
+        <GamePath Condition="'$(GamePath)' == '\'">D:\SteamLibrary\steamapps\common\Void Crew\</GamePath>
     </PropertyGroup>
 
     <ItemDefinitionGroup>

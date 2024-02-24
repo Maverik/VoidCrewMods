@@ -1,6 +1,6 @@
 # 🔖 CHANGELOG
 
-## 0.0.3.1
+## 0.0.4
 - Deduplicate stacktrace where there's no inner exception to report
 
 ## 0.0.3

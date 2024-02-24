@@ -14,7 +14,7 @@
     <Target Name="_ThunderStoreDependencies" BeforeTargets="_GeneratePluginManifest" AfterTargets="Build">
         <ItemGroup>
             <ThunderDependency Include="BepInEx-BepInExPack-5.4.2100" Condition="'$(AssemblyName)' == 'MavsLibCore'"/>
-            <ThunderDependency Include="Maverik-MavsCoreLibrary-0.0.3.1" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
+            <ThunderDependency Include="Maverik-MavsCoreLibrary-0.0.4" Condition="'$(AssemblyName)' != 'MavsLibCore'"/>
         </ItemGroup>
     </Target>
 

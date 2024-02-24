@@ -64,16 +64,6 @@ sealed class BetterScoop : MavsBepInExPlugin<BetterScoop, PluginConfiguration>
                 foreach (var item in __result)
                     item.UseCollision = true;
 
-            Logger.LogDebug(JsonConvert.SerializeObject(carryables.Select(x => new
-            {
-                x.DisplayName,
-                x.ContextInfo.HeaderText,
-                x.assetGuid,
-                x.UseCollision,
-                x.ContainerGuid
-            })));
-        });
-    }
 #if DEBUG
                 Logger.LogDebug(JsonConvert.SerializeObject(__result.Select(x => new
                 {
