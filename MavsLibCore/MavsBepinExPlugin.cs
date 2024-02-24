@@ -76,7 +76,9 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
 
             while (iex.InnerException is not null) iex = iex.InnerException;
 
-            Logger.LogError($"Exception count tripped {ExceptionCount} of {MaxAllowedExceptionCount}: {iex.Message}\r\n{ex.Message}\r\n-- Innermost stacktrace:\r\n{iex.StackTrace}\r\n-- Stacktrace:\r\n{ex.StackTrace}");
+            Logger.LogError(iex != ex
+                ? $"Exception count tripped {ExceptionCount} of {MaxAllowedExceptionCount}: {iex.Message}\r\n{ex.Message}\r\n-- Innermost stacktrace:\r\n{iex.StackTrace}\r\n-- Stacktrace:\r\n{ex.StackTrace}"
+                : $"Exception count tripped {ExceptionCount} of {MaxAllowedExceptionCount}: {iex.Message}\r\n{ex.Message}\r\n-- Stacktrace:\r\n{ex.StackTrace}");
         }
     }
 
@@ -95,7 +97,9 @@ public abstract class MavsBepInExPlugin<T> : BaseUnityPlugin, IMetadata<string> 
 
             while (iex.InnerException is not null) iex = iex.InnerException;
 
-            Logger.LogError($"Exception count tripped {ExceptionCount} of {MaxAllowedExceptionCount}: {iex.Message}\r\n{ex.Message}\r\n-- Innermost stacktrace:\r\n{iex.StackTrace}\r\n-- Stacktrace:\r\n{ex.StackTrace}");
+            Logger.LogError(iex != ex
+                ? $"Exception count tripped {ExceptionCount} of {MaxAllowedExceptionCount}: {iex.Message}\r\n{ex.Message}\r\n-- Innermost stacktrace:\r\n{iex.StackTrace}\r\n-- Stacktrace:\r\n{ex.StackTrace}"
+                : $"Exception count tripped {ExceptionCount} of {MaxAllowedExceptionCount}: {iex.Message}\r\n{ex.Message}\r\n-- Stacktrace:\r\n{ex.StackTrace}");
 
             return exceptionValue;
         }
@@ -152,9 +156,9 @@ public abstract class MavsBepInExPlugin<T, TConfig> : MavsBepInExPlugin<T> where
 
                     using var stream = new FileStream(Config.ConfigFilePath, FileMode.Create);
                     stream.Close();
-                    
+
                     Config.Reload();
-                    
+
                     savedSettingsVersion.Value = currentSettingsVersion;
                 }
             }

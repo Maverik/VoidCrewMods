@@ -1,5 +1,8 @@
 # 🔖 CHANGELOG
 
+## 0.0.3.1
+- Deduplicate stacktrace where there's no inner exception to report
+
 ## 0.0.3
 - Added support for versioned configs to enabled force resets from plugins
 

@@ -78,7 +78,7 @@ sealed class BetterScoop : MavsBepInExPlugin<BetterScoop, PluginConfiguration>
                 Logger.LogDebug(JsonConvert.SerializeObject(__result.Select(x => new
                 {
                     x.DisplayName,
-                    x.ContextInfo.HeaderText,
+                    x.ContextInfo.Header,
                     x.assetGuid,
                     x.UseCollision,
                     ColliderSizes = string.Join(',', x.Colliders.OfType<BoxCollider>().Select(xx => xx.size)),
