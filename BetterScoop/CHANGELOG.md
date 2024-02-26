@@ -1,5 +1,9 @@
 # 🔖 CHANGELOG
 
+## 0.0.5
+- Fix all the scoop mess again
+- They've made the updated code mod unfriendly so expect this mod to break with any update that decides to touch the scoop again
+
 ## 0.0.4
 - Clamp the acceptable value for PullVelocity to MaxRange
 - Add second lure id in exclusion list for scoop
