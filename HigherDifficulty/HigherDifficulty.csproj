@@ -2,6 +2,6 @@
     <PropertyGroup>
         <Title>Higher Difficulty</Title>
         <Description>Increases the difficulty multipliers in game to make your runs more challenging.</Description>
-        <Version>0.0.2</Version>
+        <Version>0.0.3</Version>
     </PropertyGroup>
 </Project>

@@ -28,9 +28,9 @@ sealed class HigherDifficulty : MavsBepInExPlugin<HigherDifficulty, PluginConfig
                     Difficulty.Expert => 1 + Configuration.Expert.SpawnGroupAmountMultiplier,
                     Difficulty.Insane => 1 + Configuration.Insane.SpawnGroupAmountMultiplier,
                     _ => 1
-                } * __instance.droneCount * 0.625f, __instance.droneCount, __instance.droneCount * 2.25f));
+                } * __instance.InitialDroneCount * 0.625f, __instance.InitialDroneCount, __instance.InitialDroneCount * 2.25f));
 
-                SetExtensions.Set(ref __instance.droneCount, droneCount, Logger);
+                SetExtensions.Set(ref __instance.InitialDroneCount, droneCount, Logger);
             });
     }
 
