@@ -1,4 +1,4 @@
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-orange.svg?style=for-the-badge&logo=creativecommons&link=https://creativecommons.org/licenses/by-nc-sa/4.0/)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%2520BY--NC--SA%25204.0-orange.svg?style=for-the-badge&logo=creativecommons&link=https%253A%252F%252Fcreativecommons.org%252Flicenses%252Fby-nc-sa%252F4.0%252F)](https://creativecommons.org/licenses/by-nc-sa/4.0/) &nbsp%3B [![Github - Maverik](https://img.shields.io/badge/-Maverik-111111?style=for-the-badge&logo=github&labelColor=24292f&link=https%3A%2F%2Fgithub.com%2FMaverik%2F)](https://github.com/Maverik) &nbsp%3B ![Discord - Maverik](https://img.shields.io/badge/-Maverik-5865F2?style=for-the-badge&logo=discord&labelColor=black) &nbsp%3B [![Ko-Fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white&labelColor=333&link=https%253A%252F%252Fko-fi.com%25%2FZ8Z6T7OWX)](https://ko-fi.com/Z8Z6T7OWX)
 
 # Void Crew Mods by Maverik
 

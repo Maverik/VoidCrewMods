@@ -1,5 +1,8 @@
 # 🔖 CHANGELOG
 
+## 0.0.5
+- Recompile for hotfix
+
 ## 0.0.4
 - Fix for update 3 code changes
 
